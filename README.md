@@ -269,22 +269,12 @@ Contributions are welcome! Please follow these steps:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Authors
-
-- Your Name - [GitHub](https://github.com/yourusername)
-
 ## 🙏 Acknowledgments
 
 - Django REST Framework team
 - React team
 - scikit-learn contributors
 - All open-source contributors
-
-## 📞 Support
-
-For issues and questions:
-- Create an issue on [GitHub](https://github.com/yourusername/placement-portal/issues)
-- Email: your.email@example.com
 
 ## 🗺️ Roadmap
 
