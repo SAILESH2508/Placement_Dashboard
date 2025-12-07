@@ -1,0 +1,127 @@
+/* Page Background */
+.contact-page {
+  min-height: 100vh;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Contact Form Card */
+.contact-form {
+  background: #ffffff;
+  max-width: 620px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 114, 255, 0.15);
+}
+
+/* Title */
+.contact-form h2 {
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Input & Textarea */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  color: #1e293b;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #0072ff;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 114, 255, 0.15);
+}
+
+/* Textarea sizing */
+.contact-form textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+/* Submit Button */
+.contact-form button {
+  width: 100%;
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  color: #ffffff;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: linear-gradient(90deg, #005dd1, #009eff);
+  box-shadow: 0 6px 18px rgba(0, 114, 255, 0.3);
+}
+
+/* Status Messages */
+.success-message,
+.error-message {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.success-message {
+  color: #2e7d32;
+  background: #edf7ed;
+  border-left: 4px solid #2e7d32;
+}
+
+.error-message {
+  color: #c62828;
+  background: #fdecea;
+  border-left: 4px solid #c62828;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .contact-form {
+    padding: 2rem 1.5rem;
+    border-radius: 14px;
+  }
+
+  .contact-form h2 {
+    font-size: 24px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+  }
+
+  .contact-form button {
+    font-size: 15px;
+  }
+}

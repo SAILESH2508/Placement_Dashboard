@@ -1,0 +1,52 @@
+.page-container {
+  display: flex;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.page-content {
+  flex: 1;
+  padding: 24px;
+  margin-left: 260px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* Filters */
+.filters-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filters-row input,
+.filters-row select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.15);
+  background: var(--card-bg);
+}
+
+/* Table */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.styled-table th, 
+.styled-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.styled-table th {
+  background: rgba(0,0,0,0.05);
+  font-weight: 600;
+}

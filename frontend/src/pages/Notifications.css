@@ -1,0 +1,114 @@
+/* --- 1. CSS Variables (Theming) --- */
+
+/* Default (Dark Mode Fallback) */
+:root {
+  --page-bg: #10162a; /* Dark background */
+  --card-bg: #2a344a; /* Card background color */
+  --text-color: #e0e0e0; /* Light text */
+  --primary-color: #007bff; /* Blue accent for borders/lines */
+  --secondary-text: #4da6ff; /* Light blue accent for card headers */
+  --pinned-color: #d97706; /* Orange color for the pin indicator */
+  --border-color: #3b4255; /* Border color for general elements */
+}
+
+/* Light Theme Override */
+.light-mode { /* Apply this class to the <body> or parent element */
+  --page-bg: #f4f7f9;
+  --card-bg: #ffffff;
+  --text-color: #333333; /* Dark text for high contrast */
+  --secondary-text: #0056b3; /* Darker blue accent */
+  --border-color: #e0e0e0;
+}
+
+---
+
+/* --- 2. Global Layout --- */
+
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--page-bg); /* Theme-aware background */
+}
+
+.sidebar {
+    width: 260px; /* Assumed sidebar width */
+}
+
+.page-content {
+  flex: 1; /* Content fills remaining space */
+  padding: 24px;
+}
+
+/* --- 3. Page Title --- */
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  
+  /* Underline styling */
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px; 
+  display: inline-block;
+  color: var(--text-color); /* Theme-aware text color */
+}
+
+/* --- 4. Notification List Container --- */
+
+.notif-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* --- 5. Individual Notification Card --- */
+
+.notif-card {
+  background: var(--card-bg); 
+  border-radius: 10px;
+  padding: 16px;
+  /* Subtle shadow works in both modes */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  position: relative;
+  color: var(--text-color); 
+  /* Theme-aware border for visibility in light mode */
+  border: 1px solid var(--border-color); 
+  transition: transform 0.2s ease;
+}
+
+.notif-card h3 {
+    color: var(--secondary-text); /* Theme-aware header color */
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.notif-card p {
+    font-size: 0.95em;
+    margin: 0;
+}
+
+/* --- 6. Pinned Styling --- */
+
+.notif-card.pinned {
+  border-left: 4px solid var(--pinned-color); /* Orange indicator */
+}
+
+/* Override background for Pinned in Light Mode for better emphasis */
+.light-mode .notif-card.pinned {
+    background-color: #fffaf0; /* Very light yellow background */
+}
+
+/* 7. Pinned Badge (Guaranteed High Contrast) */
+
+.pin-badge {
+  background: var(--pinned-color); 
+  color: white; /* White text on orange is visible in all themes */
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}

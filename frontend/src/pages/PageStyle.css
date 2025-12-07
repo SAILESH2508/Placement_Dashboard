@@ -1,0 +1,58 @@
+.page-container {
+  display: flex;
+}
+
+.page-content {
+  flex: 1;
+  margin-left: 260px;
+  padding: 30px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: 0.3s ease;
+}
+
+/* Table */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+.styled-table tr:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Cards */
+.card-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Notifications */
+.notification-list {
+  list-style: none;
+  padding: 0;
+}
+
+.notification-card {
+  background: var(--card-bg);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
