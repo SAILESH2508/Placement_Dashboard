@@ -188,6 +188,14 @@ POST /api/ml/predict/
   <img src="screenshots/reset_password.jpg" width="30%" />
 </p>
 
+### AI Features & Analytics
+![AI Predictor](screenshots/ai_predictor.png)
+![Statistics](screenshots/statistics.jpg)
+
+### Communication & Recruiters
+![Chatbot](screenshots/chatbot.jpg)
+![Companies](screenshots/companies.jpg)
+
 ## 📚 API Documentation
 
 ### Authentication
