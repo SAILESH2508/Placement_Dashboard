@@ -176,13 +176,17 @@ POST /api/ml/predict/
 ## 🎨 Screenshots
 
 ### Dashboard
-![Dashboard](docs/screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard.jpg)
 
-### AI Predictor
-![AI Predictor](docs/screenshots/ml-predictor.png)
+### Placement Management
+![Placement Offers](screenshots/placements.jpg)
 
-### Dark Mode
-![Dark Mode](docs/screenshots/dark-mode.png)
+### Authentication Flow
+<p float="left">
+  <img src="screenshots/login.jpg" width="30%" />
+  <img src="screenshots/signup.jpg" width="30%" /> 
+  <img src="screenshots/reset_password.jpg" width="30%" />
+</p>
 
 ## 📚 API Documentation
 
