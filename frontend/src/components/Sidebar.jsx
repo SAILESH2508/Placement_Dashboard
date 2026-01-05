@@ -23,10 +23,10 @@ const Sidebar = () => {
 
   // ✅ Logout redirect
   const handleLogout = () => {
-  localStorage.removeItem("access_token");
-  localStorage.removeItem("refresh_token");
-  window.location.href = "/login";
-};
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    window.location.href = "/login";
+  };
 
   // ✅ Navigation items
   const navItems = [

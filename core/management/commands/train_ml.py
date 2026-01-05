@@ -32,13 +32,21 @@ class Command(BaseCommand):
             df = pd.DataFrame({
                 'branch': np.random.choice(branches, size=N, p=[0.35,0.25,0.15,0.1,0.15]),
                 'cgpa': np.round(np.random.normal(7.0, 1.0, size=N).clip(4.0,10.0), 2),
+                'internships': np.random.randint(0, 4, size=N),
+                'projects': np.random.randint(0, 6, size=N),
+                'communication': np.random.randint(1, 11, size=N),
                 'year': np.random.choice([2023,2024,2025], size=N, p=[0.3,0.4,0.3])
             })
-            # synthetic placement label: probability depends on cgpa and branch
+            # synthetic placement label: probability depends on all factors
             def synth_label(row):
-                base = (row['cgpa'] - 6.0) * 0.4
-                branch_boost = 0.2 if row['branch'] in ('CSE','IT') else 0.0
-                prob = (0.2 + base + branch_boost)
+                # Weights: CGPA (0.4), Internships (0.15), Projects (0.1), Comm (0.1), Branch (0.1)
+                score = (row['cgpa'] - 6.0) * 0.15
+                score += (row['internships'] * 0.1)
+                score += (row['projects'] * 0.05)
+                score += ((row['communication'] - 5) * 0.02)
+                
+                branch_boost = 0.1 if row['branch'] in ('CSE','IT') else 0.0
+                prob = 0.3 + score + branch_boost
                 prob = max(0.01, min(0.99, prob))
                 return np.random.rand() < prob
             df['placed'] = df.apply(synth_label, axis=1).astype(int)

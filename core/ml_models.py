@@ -17,7 +17,7 @@ os.makedirs(MODEL_DIR, exist_ok=True)
 
 # simple branch mapping if you prefer label encoding — we'll use one-hot in pipeline
 CATEGORICAL_FEATURES = ['branch']
-NUMERIC_FEATURES = ['cgpa', 'year']
+NUMERIC_FEATURES = ['cgpa', 'year', 'internships', 'projects', 'communication']
 
 CLASS_MODEL_PATH = os.path.join(MODEL_DIR, 'placement_class_model.joblib')
 REG_MODEL_PATH = os.path.join(MODEL_DIR, 'package_reg_model.joblib')
@@ -76,13 +76,53 @@ def train_models(df, target_col='placed', package_col='package_lpa', random_stat
 
     joblib.dump(reg, REG_MODEL_PATH)
 
+    # Feature Importance (Random Forest Regressor)
+    importances = reg.feature_importances_
+    # We need to map these back to feature names. 
+    # Since we used a ColumnTransformer, we need to extract feature names.
+    try:
+        if hasattr(preprocessor, 'get_feature_names_out'):
+            feature_names = preprocessor.get_feature_names_out()
+        else:
+             # Fallback if scikit-learn version is old or structure differs
+            feature_names = [f"feat_{i}" for i in range(len(importances))]
+    except:
+        feature_names = [f"feat_{i}" for i in range(len(importances))]
+
+    # Sort importances
+    feat_imp = sorted(zip(feature_names, importances), key=lambda x: x[1], reverse=True)
+    # Simplify names (remove "cat__" prefix etc)
+    feat_imp_clean = []
+    for name, val in feat_imp:
+        clean_name = name.replace('cat__', '').replace('num__', '').replace('remainder__', '')
+        feat_imp_clean.append({"feature": clean_name, "importance": round(float(val), 4)})
+
+    metrics_data = {
+        'classification': {
+            'accuracy': float(acc), 
+            'auc': float(auc),
+            'status': "Good" if acc > 0.7 else "Needs Improvement"
+        },
+        'regression': {
+            'mae': float(mae), 
+            'r2': float(r2)
+        },
+        'feature_importance': feat_imp_clean[:5], # Top 5
+        'last_trained': pd.Timestamp.now().isoformat()
+    }
+
+    import json
+    METRICS_PATH = os.path.join(MODEL_DIR, 'metrics.json')
+    with open(METRICS_PATH, 'w') as f:
+        json.dump(metrics_data, f, indent=4)
+
     return {
-        'classification': {'accuracy': float(acc), 'auc': float(auc)},
-        'regression': {'mae': float(mae), 'r2': float(r2)},
+        'metrics': metrics_data,
         'paths': {
             'preprocessor': PREPROCESSOR_PATH,
             'classifier': CLASS_MODEL_PATH,
-            'regressor': REG_MODEL_PATH
+            'regressor': REG_MODEL_PATH,
+            'metrics': METRICS_PATH
         }
     }
 

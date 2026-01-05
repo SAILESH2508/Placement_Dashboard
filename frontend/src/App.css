@@ -29,7 +29,8 @@ h2 {
   gap: 10px;
 }
 
-input, textarea {
+input,
+textarea {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -55,7 +56,8 @@ table {
   margin-top: 20px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
@@ -91,8 +93,15 @@ th {
 }
 
 @keyframes pulse-btn {
-  0%, 100% { box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4); }
-  50% { box-shadow: 0 4px 30px rgba(37, 99, 235, 0.6); }
+
+  0%,
+  100% {
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 4px 30px rgba(37, 99, 235, 0.6);
+  }
 }
 
 .chatbot-floating-btn:hover {

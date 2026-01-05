@@ -1,39 +1,24 @@
+from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import (
-    StudentViewSet,
-    CompanyViewSet,
-    PlacementViewSet,
-    NotificationViewSet,
-    PlacementStatisticViewSet,
-    dashboard_metrics,
-    dashboard_summary,
-    daily_statistics,
-    monthly_statistics,
-    department_statistics,
-    top_companies,
-)
+from django.conf import settings
+from django.conf.urls.static import static
+from core import views as core_views
 
-router = DefaultRouter()
-router.register("students", StudentViewSet)
-router.register("companies", CompanyViewSet)
-router.register("placements", PlacementViewSet)
-router.register("notifications", NotificationViewSet)
-router.register("placement-statistics", PlacementStatisticViewSet)
 
 urlpatterns = [
-    # Custom endpoints BEFORE router (to avoid conflicts)
-    path("dashboard/summary/", dashboard_summary),
-    path("metrics/", dashboard_metrics),
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),  # login/logout
+    path('', include('students.urls')),  # we'll put dashboard and student urls here
+    path('companies/', include('companies.urls')),
+    path('placements/', include('placements.urls')),
+    path('notifications/', include('notifications.urls')),
+    # Removed conflicting home path
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-    # Stats
-    path("statistics/daily/", daily_statistics),
-    path("statistics/monthly/", monthly_statistics),
-    path("statistics/dept/", department_statistics),
 
-    # Top companies endpoint (must come before router)
-    path("companies/top/", top_companies),
 
-    # Router URLs (must come last)
-    path("", include(router.urls)),
-]
+from rest_framework import routers
+from students.api import StudentViewSet
+router = routers.DefaultRouter()
+router.register(r'api/students', StudentViewSet)
+urlpatterns += router.urls

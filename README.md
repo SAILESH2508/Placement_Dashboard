@@ -1,4 +1,4 @@
-# 🎓 Placement Portal
+# 🎓 Placement Portal - Comprehensive Documentation
 
 A comprehensive AI-powered placement management system for educational institutions built with Django REST Framework and React.
 
@@ -6,6 +6,21 @@ A comprehensive AI-powered placement management system for educational instituti
 ![Django](https://img.shields.io/badge/Django-5.0-green.svg)
 ![React](https://img.shields.io/badge/React-19.2-61DAFB.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+---
+
+## 📑 Table of Contents
+1. [Overview & Features](#-features)
+2. [Tech Stack](#-tech-stack)
+3. [Project Structure](#-project-structure)
+4. [Quick Start Guide](#-quick-start-guide)
+5. [Deployment Guide](#-deployment-guide)
+6. [Security Policy](#-security-policy)
+7. [Contributing](#-contributing)
+8. [Changelog](#-changelog)
+9. [API Documentation](#-api-documentation)
+
+---
 
 ## ✨ Features
 
@@ -24,6 +39,8 @@ A comprehensive AI-powered placement management system for educational instituti
 - 📱 **Responsive Design** - Works on all devices
 - 🎨 **Modern UI** - Beautiful, intuitive interface
 
+---
+
 ## 🛠️ Tech Stack
 
 ### Backend
@@ -39,74 +56,7 @@ A comprehensive AI-powered placement management system for educational instituti
 - **HTTP Client**: Axios
 - **Icons**: React Icons, Lucide React
 
-## 📋 Prerequisites
-
-- Python 3.10 or higher
-- Node.js 16 or higher
-- npm or yarn
-
-## 🚀 Quick Start
-
-### Backend Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/placement-portal.git
-cd placement-portal
-
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# Windows:
-venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Create .env file
-copy .env.example .env  # Windows
-cp .env.example .env    # Linux/Mac
-
-# Run migrations
-python manage.py makemigrations
-python manage.py migrate
-
-# Create superuser
-python manage.py createsuperuser
-
-# Train ML model
-python ml_model/train_model.py
-
-# (Optional) Load sample data
-python manage.py populate_sample_data
-
-# Run development server
-python manage.py runserver
-```
-
-Backend will be available at: http://127.0.0.1:8000
-
-### Frontend Setup
-
-```bash
-# Navigate to frontend directory
-cd frontend
-
-# Install dependencies
-npm install
-
-# Create .env file
-copy .env.example .env  # Windows
-cp .env.example .env    # Linux/Mac
-
-# Start development server
-npm start
-```
-
-Frontend will be available at: http://localhost:3000
+---
 
 ## 📁 Project Structure
 
@@ -136,65 +86,183 @@ placement_portal/
 └── README.md                 # This file
 ```
 
-## 🔑 Default Credentials
+---
 
-### Sample Users (after loading sample data)
-- **Username**: student1, student2, etc.
-- **Password**: password123
+## 🚀 Quick Start Guide
 
-### Admin Panel
-- Create your own superuser with: `python manage.py createsuperuser`
-- Access at: http://127.0.0.1:8000/admin/
+Get the Placement Portal up and running in 5 minutes!
 
-## 📊 ML Model
+### Prerequisites
+- Python 3.10 or higher
+- Node.js 16 or higher
+- npm or yarn
 
-The placement prediction model uses Random Forest classification with:
-- **Accuracy**: 75%
-- **Features**: CGPA, Internships, Projects, Communication Skills
-- **Training Data**: 200+ samples
+### automated Setup (Windows)
+```bash
+# Run setup script
+setup.bat
+```
 
-### Training the Model
+### Manual Backend Setup (5 minutes)
 
 ```bash
+# 1. Create virtual environment
+python -m venv venv
+
+# 2. Activate it
+venv\Scripts\activate  # Windows
+# source venv/bin/activate # Linux/Mac
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Create .env file
+copy .env.example .env
+
+# 5. Run migrations
+python manage.py migrate
+
+# 6. Train ML model
 python ml_model/train_model.py
+
+# 7. Create admin user
+python manage.py createsuperuser
+
+# 8. Start server
+python manage.py runserver
 ```
 
-### Making Predictions
+✅ Backend running at: http://127.0.0.1:8000
 
-Navigate to the AI Predictor page or use the API:
+### Manual Frontend Setup (3 minutes)
 
 ```bash
-POST /api/ml/predict/
-{
-    "cgpa": 8.5,
-    "internships": 2,
-    "projects": 3,
-    "communication": 8
-}
+# 1. Navigate to frontend
+cd frontend
+
+# 2. Install dependencies
+npm install
+
+# 3. Create .env file
+copy .env.example .env
+
+# 4. Start development server
+npm start
 ```
 
-## 🎨 Screenshots
+✅ Frontend running at: http://localhost:3000
 
-### Dashboard
-![Dashboard](screenshots/dashboard.jpg)
+---
 
-### Placement Management
-![Placement Offers](screenshots/placements.jpg)
+## 🌐 Deployment Guide
 
-### Authentication Flow
-<p float="left">
-  <img src="screenshots/login.jpg" width="30%" />
-  <img src="screenshots/signup.jpg" width="30%" /> 
-  <img src="screenshots/reset_password.jpg" width="30%" />
-</p>
+This guide covers deploying the Placement Portal to production environments.
 
-### AI Features & Analytics
-![AI Predictor](screenshots/ai_predictor.png)
-![Statistics](screenshots/statistics.jpg)
+### Prerequisites (Production)
+- Linux server (Ubuntu 20.04+ recommended)
+- Domain name & SSL certificate
+- PostgreSQL database
+- Nginx & Gunicorn
 
-### Communication & Recruiters
-![Chatbot](screenshots/chatbot.jpg)
-![Companies](screenshots/companies.jpg)
+### Production Configuration
+
+1. **Environment Variables**: Update `.env` with production values:
+   ```env
+   SECRET_KEY=your-secure-secret-key
+   DEBUG=False
+   ALLOWED_HOSTS=yourdomain.com
+   DATABASE_URL=postgresql://user:pass@localhost:5432/db
+   ```
+
+2. **Gunicorn Service**:
+   Create `/etc/systemd/system/gunicorn.service`:
+   ```ini
+   [Service]
+   User=www-data
+   WorkingDirectory=/var/www/placement_portal
+   ExecStart=/var/www/placement_portal/venv/bin/gunicorn --workers 3 --bind unix:/var/www/placement_portal/gunicorn.sock placement_portal.wsgi:application
+   ```
+
+3. **Nginx Configuration**:
+   Create `/etc/nginx/sites-available/placement_portal`:
+   ```nginx
+   server {
+       listen 80;
+       server_name yourdomain.com;
+       location / { root /var/www/placement_portal/frontend_build; try_files $uri $uri/ /index.html; }
+       location /api/ { proxy_pass http://unix:/var/www/placement_portal/gunicorn.sock; }
+   }
+   ```
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) (archived) for full details.
+
+---
+
+## 🔒 Security Policy
+
+### Best Practices
+
+1. **Never commit sensitive data** (API keys, passwords, .env files).
+2. **Use environment variables** for all configuration.
+3. **Keep dependencies updated** (`pip list --outdated`, `npm outdated`).
+4. **Set DEBUG=False** in production.
+5. **Use HTTPS** for all traffic.
+
+### Known Security Considerations
+
+- **JWT Tokens**: Stored in localStorage (consider httpOnly cookies for high security).
+- **CORS**: Restricted in production.
+- **Rate Limiting**: Recommended for production.
+
+### Reporting Vulnerabilities
+Email security@placementportal.com with details.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions!
+
+1. **Fork the repository**
+2. **Create a branch** (`git checkout -b feature/AmazingFeature`)
+3. **Make your changes**
+4. **Test thoroughly**
+5. **Commit** (`git commit -m 'Add AmazingFeature'`)
+6. **Push** (`git push origin feature/AmazingFeature`)
+7. **Open a Pull Request**
+
+---
+
+## 📝 Changelog
+
+### [1.1.0] - 2025-11-30
+
+#### Added
+- ✅ Comprehensive error handling across all API endpoints
+- ✅ Input validation for all models and serializers
+- ✅ Environment variable management with python-decouple
+- ✅ Security enhancements (CORS, CSRF, secure headers)
+- ✅ ML model caching & enhanced prediction with confidence scores
+- ✅ Pagination, search, and filtering
+- ✅ Notification system
+
+#### Changed
+- 🔧 Enhanced authentication & settings configuration
+- 🔧 Improved ML model training & evaluation
+- 🔧 Refactored frontend API client
+
+#### Fixed
+- 🐛 Duplicate REST_FRAMEWORK config
+- 🐛 ML model path resolution
+- 🐛 CORS configuration
+
+### [1.0.0] - Initial Release
+- Basic student/company/placement management
+- Statistics dashboard
+- ML-based placement prediction
+- JWT authentication
+
+---
 
 ## 📚 API Documentation
 
@@ -207,100 +275,27 @@ POST /api/ml/predict/
 ### Students
 - `GET /api/students/` - List all students
 - `POST /api/students/` - Create student
-- `GET /api/students/{id}/` - Get student details
-- `PUT /api/students/{id}/` - Update student
-- `DELETE /api/students/{id}/` - Delete student
+- `GET /api/students/{id}/` - Get details
 
 ### Companies
 - `GET /api/companies/` - List all companies
 - `POST /api/companies/` - Create company
-- `GET /api/companies/top/` - Get top recruiting companies
-
-### Placements
-- `GET /api/placements/` - List all placements
-- `POST /api/placements/` - Create placement
-- `GET /api/placements/{id}/` - Get placement details
 
 ### ML Predictions
 - `POST /api/ml/predict/` - Single prediction
-- `POST /api/ml/batch-predict/` - Batch predictions
 - `GET /api/ml/model-info/` - Model information
 
 For complete API documentation, visit: http://127.0.0.1:8000/swagger/
 
-## 🌐 Deployment
-
-### Production Checklist
-
-- [ ] Set `DEBUG=False` in settings
-- [ ] Generate strong `SECRET_KEY`
-- [ ] Configure `ALLOWED_HOSTS`
-- [ ] Set up PostgreSQL database
-- [ ] Configure email settings
-- [ ] Set up static file serving
-- [ ] Enable HTTPS
-- [ ] Configure CORS properly
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
-
-## 🔒 Security
-
-- JWT-based authentication
-- Password hashing with Django's built-in system
-- CORS protection
-- CSRF protection
-- SQL injection prevention (Django ORM)
-- XSS protection
-- Environment variable management
-
-See [SECURITY.md](SECURITY.md) for security guidelines.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+---
 
 ## 👥 Authors
-
 - Your Name - [GitHub](https://github.com/yourusername)
 
 ## 🙏 Acknowledgments
-
 - Django REST Framework team
 - React team
 - scikit-learn contributors
-- All open-source contributors
-
-## 📞 Support
-
-For issues and questions:
-- Create an issue on [GitHub](https://github.com/yourusername/placement-portal/issues)
-- Email: your.email@example.com
-
-## 🗺️ Roadmap
-
-- [ ] Email notifications
-- [ ] PDF report generation
-- [ ] Advanced analytics
-- [ ] Mobile application
-- [ ] Interview scheduling
-- [ ] Document management
-- [ ] Multi-language support
-- [ ] Role-based access control
-
-## ⭐ Star History
-
-If you find this project useful, please consider giving it a star!
 
 ---
-
 **Made with ❤️ for educational institutions**

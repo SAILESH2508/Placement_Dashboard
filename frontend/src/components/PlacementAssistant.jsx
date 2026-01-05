@@ -3,10 +3,18 @@ import "./PlacementAssistant.css";
 import { FaPaperPlane, FaRobot } from "react-icons/fa";
 import OpenAI from "openai";
 
-const client = new OpenAI({
-  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true
-});
+// Initialize OpenAI client safely
+let client = null;
+try {
+  if (process.env.REACT_APP_OPENAI_API_KEY) {
+    client = new OpenAI({
+      apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+      dangerouslyAllowBrowser: true
+    });
+  }
+} catch (error) {
+  console.warn("OpenAI client failed to initialize:", error);
+}
 
 const PlacementAssistant = ({ useAI }) => {
   const [messages, setMessages] = useState([

@@ -16,8 +16,8 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
 }
 
@@ -29,8 +29,15 @@
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .ml-header h1 {
@@ -62,8 +69,8 @@
   background: var(--card-bg);
   border-radius: 14px;
   padding: 28px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
 }
 
@@ -102,7 +109,7 @@
 
 .form-group input {
   padding: 12px 16px;
-  border: 2px solid rgba(0,0,0,0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   font-size: 15px;
   background: var(--card-bg);
@@ -161,7 +168,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ================== ERROR MESSAGE ================== */
@@ -187,7 +196,7 @@
   text-align: center;
   margin-bottom: 30px;
   padding-bottom: 20px;
-  border-bottom: 2px solid rgba(0,0,0,0.06);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
 }
 
 .result-header h2 {
@@ -208,8 +217,13 @@
 }
 
 @keyframes scaleIn {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }
 
 /* ================== CONFIDENCE SECTION ================== */
@@ -228,11 +242,11 @@
 .confidence-bar-container {
   width: 100%;
   height: 44px;
-  background: rgba(0,0,0,0.05);
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 22px;
   overflow: hidden;
   position: relative;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .confidence-bar {
@@ -260,7 +274,7 @@
 .feature-importance {
   margin-top: 30px;
   padding-top: 30px;
-  border-top: 2px solid rgba(0,0,0,0.06);
+  border-top: 2px solid rgba(0, 0, 0, 0.06);
 }
 
 .features-grid {
@@ -315,7 +329,7 @@
   text-align: center;
   transition: all 0.3s;
   border: 2px solid rgba(37, 99, 235, 0.1);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .recommendation-card:hover {
@@ -413,7 +427,8 @@
   }
 
   .form-group input {
-    font-size: 16px; /* Prevents zoom on mobile */
+    font-size: 16px;
+    /* Prevents zoom on mobile */
   }
 }
 
@@ -424,8 +439,8 @@
 
 [data-theme="dark"] .ml-header {
   background: #1e293b;
-  border-color: rgba(255,255,255,0.12);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
 }
 
 [data-theme="dark"] .ml-header .ml-icon {
@@ -438,8 +453,8 @@
 
 [data-theme="dark"] .ml-card {
   background: #1e293b;
-  border-color: rgba(255,255,255,0.12);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
 }
 
 [data-theme="dark"] .ml-card h2 {
@@ -452,7 +467,7 @@
 
 [data-theme="dark"] .form-group input {
   background: #0f172a;
-  border-color: rgba(255,255,255,0.12);
+  border-color: rgba(255, 255, 255, 0.12);
   color: #f1f5f9;
 }
 
@@ -481,7 +496,7 @@
 }
 
 [data-theme="dark"] .result-header {
-  border-bottom-color: rgba(255,255,255,0.12);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
 }
 
 [data-theme="dark"] .result-header h2 {
@@ -493,8 +508,8 @@
 }
 
 [data-theme="dark"] .confidence-bar-container {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 [data-theme="dark"] .confidence-text {
@@ -502,7 +517,7 @@
 }
 
 [data-theme="dark"] .feature-importance {
-  border-top-color: rgba(255,255,255,0.12);
+  border-top-color: rgba(255, 255, 255, 0.12);
 }
 
 [data-theme="dark"] .feature-item {
@@ -592,6 +607,7 @@
   }
 
   .form-group input {
-    font-size: 16px; /* Prevents zoom on mobile */
+    font-size: 16px;
+    /* Prevents zoom on mobile */
   }
 }

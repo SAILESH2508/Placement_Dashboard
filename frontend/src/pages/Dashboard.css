@@ -11,7 +11,8 @@
 .page-content {
   flex: 1;
   padding: 32px 40px;
-  margin-left: 240px; /* SIDEBAR WIDTH */
+  margin-left: 240px;
+  /* SIDEBAR WIDTH */
   box-sizing: border-box;
 
   display: flex;
@@ -61,7 +62,7 @@
   border-radius: 14px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
   transition: transform 0.25s ease;
 }
 
@@ -92,8 +93,8 @@
   background: var(--card-bg);
   border-radius: 14px;
   padding: 22px;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
 }
 
 .panel-title {
@@ -123,7 +124,7 @@
   margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .top-name {
@@ -151,8 +152,8 @@
 [data-theme="dark"] .top-item {
   background: #1e293b;
   color: #f1f5f9;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
 }
 
 [data-theme="dark"] .kpi-value {
@@ -174,12 +175,12 @@
 }
 
 [data-theme="dark"] .recharts-cartesian-grid line {
-  stroke: rgba(255,255,255,0.12) !important;
+  stroke: rgba(255, 255, 255, 0.12) !important;
 }
 
 [data-theme="dark"] .recharts-default-tooltip {
   background: #1e293b !important;
-  border: 1px solid rgba(255,255,255,0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   color: #f1f5f9 !important;
 }
 
