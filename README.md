@@ -296,6 +296,22 @@ For complete API documentation, visit: http://127.0.0.1:8000/swagger/
 - Django REST Framework team
 - React team
 - scikit-learn contributors
+- All open-source contributors
+
+## 🗺️ Roadmap
+
+- [ ] Email notifications
+- [ ] PDF report generation
+- [ ] Advanced analytics
+- [ ] Mobile application
+- [ ] Interview scheduling
+- [ ] Document management
+- [ ] Multi-language support
+- [ ] Role-based access control
+
+## ⭐ Star History
+
+If you find this project useful, please consider giving it a star!
 
 ---
 **Made with ❤️ for educational institutions**
