@@ -21,8 +21,15 @@
 }
 
 @keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* --- Header --- */
@@ -68,8 +75,15 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .assistant-message.me {
@@ -103,6 +117,56 @@
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
 }
 
+/* --- Suggestion Chips --- */
+.suggestion-chips {
+  padding: 10px 16px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  background: var(--card-bg);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  scrollbar-width: thin;
+}
+
+.suggestion-chips::-webkit-scrollbar {
+  height: 4px;
+}
+
+.suggestion-chips::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.chip {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.chip:hover {
+  background: #2563eb;
+  color: white;
+}
+
+/* Dark Mode Chips */
+[data-theme="dark"] .chip {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .chip:hover {
+  background: #3b82f6;
+  color: white;
+}
+
 /* --- Typing Animation --- */
 .assistant-typing {
   display: flex;
@@ -123,12 +187,26 @@
   animation: typing 1.2s infinite ease-in-out;
 }
 
-.dot:nth-child(2) { animation-delay: 0.2s; }
-.dot:nth-child(3) { animation-delay: 0.4s; }
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
 @keyframes typing {
-  0%, 100% { transform: translateY(0px); opacity: 0.4; }
-  50% { transform: translateY(-6px); opacity: 1; }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
 }
 
 /* --- Input Box --- */

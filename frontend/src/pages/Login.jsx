@@ -22,8 +22,8 @@ const Login = () => {
       const res = await axios.post(LOGIN_URL, { username, password });
 
       // ✅ Extract JWT tokens from response
-      const access = res.data.tokens.access;
-      const refresh = res.data.tokens.refresh;
+      const access = res.data.access;
+      const refresh = res.data.refresh;
 
       // ✅ Store in browser
       localStorage.setItem("access_token", access);
